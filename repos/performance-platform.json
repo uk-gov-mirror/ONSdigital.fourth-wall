@@ -1,0 +1,147 @@
+[
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-admin"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-client"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-documentation"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-collector-config"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "gapy"
+    },
+    {
+        "baseUrl": "https://github.gds/api/v3/repos",
+        "userName": "gds",
+        "repo": "pp-deployment"
+    },
+    {
+        "baseUrl": "https://github.gds/api/v3/repos",
+        "userName": "gds",
+        "repo": "google-dev-credentials"
+    },
+    {
+        "baseUrl": "https://github.gds/api/v3/repos",
+        "userName": "gds",
+        "repo": "pp-pilotis"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "pp-smokey"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-collector-plugins"
+    },
+    {
+        "baseUrl": "https://github.gds/api/v3/repos",
+        "userName": "gds",
+        "repo": "pp-manual"
+    },
+    {
+        "baseUrl": "https://github.gds/api/v3/repos",
+        "userName": "gds",
+        "repo": "pp-sync"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "puppet-logstash"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-ga-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-ga-realtime-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-google-spreadsheet-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdrop-pingdom-collector"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "backdropsend"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "fourth-wall"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performance-platform"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "pp-development"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "pp-puppet"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "puppet-backdrop"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "puppet-google_credentials"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "showtime"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "stagecraft"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "stageprompt"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "spotlight"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "cheapseats"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "govuk_frontend_toolkit"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "performanceplatform-notifier"
+    },
+    {
+        "userName": "alphagov",
+        "repo": "limelight"
+    }
+]
