@@ -43,6 +43,7 @@
       var statusPending = this.model.status.get('state') === 'pending';
       var statusMergable = this.model.info.get('mergeable');
       var statusString = this.generateStatusHTML(this.model.info, this.model.status);
+      var approvalString = this.generateApprovalHTML(this.model.info, this.model.reviews);
 
       var commentCount = 0;
       if (this.model.comment.get('numComments')){
@@ -71,8 +72,10 @@
 
 
       var needsRebase = undefined;
+
       var baseSyncHTML = "";
-      if (this.model.branchHead.get('object') &&
+
+      if (this.model. branchHead.get('object') &&
           this.model.get('base')) {
 
           needsRebase = this.model.branchHead.get('object').sha !== this.model.get('base').sha;
@@ -98,7 +101,7 @@
             this.secondsToTime(this.model.get('elapsed_time')),
             '</div>',
           '</div>',
-        '<div class="status-holder">', statusString , baseSyncHTML,'</div>',
+        '<div class="status-holder">', statusString , baseSyncHTML, approvalString, '</div>',
         '</div>',
         '<p class="repo">' + this.model.get('repo') +'</p>',
         '<p><a href="', this.model.get('html_url'), '">',
@@ -165,14 +168,50 @@
       } else {
         text = 'Unknown';
       }
-
       // if status is success but PR is not mergable, overwrite status...
       if (success && info.get('mergeable') === false){
         classes = 'not-mergeable';
         text = 'Merge Conflicts';
       }
-
       return '<span class="status ' + classes + '">' + text + '</span>';
+    },
+
+    generateApprovalHTML: function(info,reviews) {
+      var classes = '';
+      var text = '';
+
+      var reviewers = reviews.get('reviewers')
+
+      if (reviewers != null){
+          var totalReviews = Object.keys(reviewers).length;
+          var approved = 0;
+          var requestedChanges = 0;
+
+          for(var review in reviewers) {
+            if(reviewers[review].state == "APPROVED"){
+                approved++;
+            }
+            else if (reviewers[review].state == "CHANGES_REQUESTED"){
+                requestedChanges++;
+            }
+          }
+
+          text = 'Approvals (' + approved + '/' + totalReviews + ')';
+      } else {
+        text = 'Unknown';
+      }
+
+      // if status is approved only if the no other statuses are present
+      if (requestedChanges >0){
+        classes = 'changes-requested'
+      }
+      else if (approved < 2){
+        classes = 'pending-approval';
+      }
+      else{
+        classes = 'approved';
+      }
+       return '<span class="status ' + classes + '">' + text + '</span>';
     }
   });
 

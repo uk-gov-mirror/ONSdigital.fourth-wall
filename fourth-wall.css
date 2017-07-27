@@ -64,13 +64,12 @@ body {
 
 .status {
   padding: 0.5rem 0.75rem;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0px 0px;
   border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .base-sync {
   padding: 0.15rem 0.45rem;
-  border-radius: 0 0 4px 4px;
 }
 
 .success {
@@ -82,11 +81,26 @@ body {
 }
 
 .not-mergeable {
-  background-color: #000;
+  background-color: black;
 }
 
 .pending {
   background-color: orange;
+}
+
+.approved {
+  background-color: green;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.pending-approval {
+  background-color: orange;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.changes-requested {
+  background-color: red;
+  border-radius: 0px 0px 4px 4px;
 }
 
 #pulls {
