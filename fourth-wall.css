@@ -219,7 +219,7 @@ body {
   p {
     line-height: 1.1;
     font-size: 2rem;
-    margin: 1.0rem 0;
+    margin: 1.5rem 0;
     display: block;
     font-weight: 100;
   }
@@ -229,9 +229,8 @@ body {
   }
 
   p.repo {
-    font-size: 1.15rem;
+    font-size: 1.45rem;
     margin: 1rem 0 -1rem 0;
-    font-weight: bold;
-    padding-right: 20px;
+    font-weight: bold
   }
 }
