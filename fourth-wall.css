@@ -62,8 +62,8 @@ body {
     min-width: 240px;
     font-size: 1.2rem;
     text-align: left;
-    position: relative;
-    left: -60px;
+
+    left: 0px;
 }
 
 .title a{
