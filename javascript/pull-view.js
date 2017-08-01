@@ -99,23 +99,17 @@
           '<span class="username">',this.model.get('user').login,'</span>',
           '<div class="elapsed-time" data-created-at="', this.model.get('created_at'),'">',
             this.secondsToTime(this.model.get('elapsed_time')),
-            '<p class="repo">' + this.model.get('repo') +'</p>',
             '</div>',
-                '<p><a href="', this.model.get('html_url'), '">',
-        '<div class="title-holder">',
-
-
+          '</div>',
+        '<div class="status-holder">', statusString , baseSyncHTML, approvalString, '</div>',
+        '</div>',
+        '<p class="repo">' + this.model.get('repo') +'</p>',
+        '<p><a href="', this.model.get('html_url'), '">',
         ' (#',
         this.model.get('number'),
         ') ',
         this.escape(this.model.get('title')),
         '</a></p><p class="review">' + assignee + '</p>',
-         '</div>',
-          '</div>',
-        '<div class="status-holder">', statusString , baseSyncHTML, approvalString, '</div>',
-        '</div>',
-
-
         labelsHTML,
       ].join(''));
     },

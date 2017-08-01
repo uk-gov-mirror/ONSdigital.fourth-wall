@@ -22,7 +22,7 @@ body {
 .username {
   color: rgba(0,0,0,0.8);
   margin-bottom: 0;
-  font-size: 0.5rem;
+  font-size: 0.9rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -44,11 +44,11 @@ body {
 .card-label {
   display: inline-block;
   vertical-align: middle;
-
+  flex: 1;
 }
 
 .status-holder {
-  width: 200px;
+  width: 130px;
   font-size: 1.1rem;
   text-align: center;
   text-transform: capitalize;
@@ -56,20 +56,6 @@ body {
   font-weight: bold;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.55));
   line-height: 1.1;
-  position: relative;
-  left: -210px;
-}
-
-.title-holder{
-    min-width: 300px;
-    font-size: 0.75rem;
-    text-align: left;
-    position: relative;
-    left: -70px;
-}
-
-.title a{
-    font-size: 22px;
 }
 
 .status-holder span {
@@ -129,12 +115,13 @@ body {
 
 #pulls li {
   background: #9FA098;
-  padding: 10px 10px 0px 10px;
+  padding: 1rem;
   border-radius: 3px;
-  min-width: 280px;
+  min-width: 300px;
+  max-height: 290px;
   box-shadow: 0 4px 0 rgba(0,0,0,0.2);
   margin: 1rem;
-  flex: 0 0 calc(2.5%);
+  flex: 0 0 calc(25% - 2rem);
   background-color: rgb(245, 235, 193)!important;
 }
 
@@ -221,7 +208,7 @@ body {
   }
 
   .elapsed-time {
-    font-size: 0.75rem;
+    font-size: 24px;
     font-weight: 100;
     color: #666;
     margin-top: -5px;
@@ -232,7 +219,7 @@ body {
 
   p {
     line-height: 1.1;
-    font-size: 1rem;
+    font-size: 2rem;
     margin: 1.5rem 0;
     display: block;
     font-weight: 100;
@@ -243,9 +230,8 @@ body {
   }
 
   p.repo {
-    font-size: 0.50rem;
+    font-size: 1.45rem;
     margin: 1rem 0 -1rem 0;
     font-weight: bold
-
   }
 }
