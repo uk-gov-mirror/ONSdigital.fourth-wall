@@ -57,16 +57,17 @@ body {
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.55));
   line-height: 1.1;
 }
-.test{
-    width: 220px;
-    font-size: 1.0rem;
+
+.title-holder{
+    min-width: 300px;
+    font-size: 1.2rem;
     text-align: left;
     position: relative;
-    left: -70px;
+    left: -60px;
 }
 
-.test a{
-    font-size: 22px;
+.title a{
+    font-size: 32px;
 }
 
 .status-holder span {

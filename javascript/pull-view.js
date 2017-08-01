@@ -99,12 +99,12 @@
           '<span class="username">',this.model.get('user').login,'</span>',
           '<div class="elapsed-time" data-created-at="', this.model.get('created_at'),'">',
             this.secondsToTime(this.model.get('elapsed_time')),
-
+            '<p class="repo">' + this.model.get('repo') +'</p>',
             '</div>',
                 '<p><a href="', this.model.get('html_url'), '">',
-        '<div class="test">',
-        '<p class="repo">' + this.model.get('repo') +'</p>',
-        '</br>',
+        '<div class="title-holder">',
+
+
         ' (#',
         this.model.get('number'),
         ') ',
