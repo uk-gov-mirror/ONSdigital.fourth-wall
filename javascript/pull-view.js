@@ -2,7 +2,6 @@
   "use strict";
   window.FourthWall = window.FourthWall || {};
 
-
   FourthWall.PullView = Backbone.View.extend({
     tagName: 'li',
 
@@ -41,9 +40,10 @@
 
       var statusFailed = this.model.status.get('failed');
       var statusPending = this.model.status.get('state') === 'pending';
-      var statusMergable = this.model.info.get('mergeable');
+      var statusMergeable = this.model.info.get('mergeable');
       var statusString = this.generateStatusHTML(this.model.info, this.model.status);
       var approvalString = this.generateApprovalHTML(this.model.info, this.model.reviews);
+      var commitString = this.generateCommitHTML(this.model.info, this.model.commits);
 
       var commentCount = 0;
       if (this.model.comment.get('numComments')){
@@ -70,9 +70,7 @@
         }
       }
 
-
       var needsRebase = undefined;
-
       var baseSyncHTML = "";
 
       if (this.model. branchHead.get('object') &&
@@ -88,22 +86,23 @@
       }
 
       if (needsRebase === false && statusFailed === false &&
-          statusPending === false && statusMergable === true) {
+          statusPending === false && statusMergeable === true) {
         this.$el.addClass("ready");
       }
 
       this.$el.html([
+      '<div class="holder">',
         '<div class="card-header">',
           '<img class="avatar" src="', this.model.get('user').avatar_url, '" />',
           '<div class="card-label">',
           '<span class="username">',this.model.get('user').login,'</span>',
           '<div class="elapsed-time" data-created-at="', this.model.get('created_at'),'">',
             this.secondsToTime(this.model.get('elapsed_time')),
+            '<p class="repo">' + this.model.get('repo') +'</p>',
             '</div>',
           '</div>',
-        '<div class="status-holder">', statusString , baseSyncHTML, approvalString, '</div>',
+
         '</div>',
-        '<p class="repo">' + this.model.get('repo') +'</p>',
         '<p><a href="', this.model.get('html_url'), '">',
         ' (#',
         this.model.get('number'),
@@ -111,6 +110,15 @@
         this.escape(this.model.get('title')),
         '</a></p><p class="review">' + assignee + '</p>',
         labelsHTML,
+        '</div>',
+        '<div class="status-container">',
+                    '<div class="status-inner">',
+                        '<div class="status-holder">', statusString,'</div>',
+                        '<div class="status-holder">', baseSyncHTML,'</div>',
+                        '<div class="status-holder">', approvalString,'</div>',
+                        '<div class="status-holder">', commitString,'</div>',
+                     '</div>',
+                '</div>',
       ].join(''));
     },
 
@@ -136,10 +144,11 @@
 
       if (hours   < 10) {hours   = "0"+hours;}
       if (minutes < 10) {minutes = "0"+minutes;}
-      if (days == 1) {
+      if (days < 1) {
         days = days + " day";
-      } else if (days > 1) {
-        days = days + " days";
+      } else if (days + minutes >= 1) {
+        days = days + " days"
+        return days + '';
       } else {
         days = "";
       }
@@ -168,7 +177,7 @@
       } else {
         text = 'Unknown';
       }
-      // if status is success but PR is not mergable, overwrite status...
+      // if status is success but PR is not mergeable, overwrite status...
       if (success && info.get('mergeable') === false){
         classes = 'not-mergeable';
         text = 'Merge Conflicts';
@@ -195,21 +204,33 @@
                 requestedChanges++;
             }
           }
-
           text = 'Approvals (' + approved + '/' + totalReviews + ')';
       } else {
         text = 'Unknown';
       }
 
       // if status is approved only if the no other statuses are present
-      if (requestedChanges >0){
+      if (requestedChanges > 0){
         classes = 'changes-requested'
       }
-      else if (approved < 2){
+      else if (approved < FourthWall.minimumApprovals){
         classes = 'pending-approval';
       }
       else{
         classes = 'approved';
+      }
+       return '<span class="status ' + classes + '">' + text + '</span>';
+    },
+
+     generateCommitHTML: function(info,commits) {
+      var classes = '';
+      var text = '';
+      var totalCommits = commits.get('committers')
+
+      text =  'Commits (' + totalCommits + ')';
+
+      if (totalCommits >= 0 ){
+        classes = 'commit';
       }
        return '<span class="status ' + classes + '">' + text + '</span>';
     }
